@@ -13,6 +13,11 @@
       systemctl enable kibana
       systemctl start kibana
       
+  - name: Refreshing file /etc/nginx/htpasswd.users
+    file:
+      path: /etc/nginx/htpasswd.users backup=yes
+      state: absent
+      
   - name: Creating a user for Kibana...
     shell: |
       echo "kibanaadmin:`openssl passwd -apr1 kibanaadmin`" | sudo tee -a /etc/nginx/htpasswd.users
@@ -26,6 +31,7 @@
       dest=/etc/nginx/conf.d/kibana.conf
       content="server {
          listen 81;
+         
          auth_basic_user_file /etc/nginx/htpasswd.users;
          location / {
          proxy_pass http://localhost:5601;
