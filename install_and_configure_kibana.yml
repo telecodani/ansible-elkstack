@@ -26,7 +26,6 @@
       dest=/etc/nginx/conf.d/kibana.conf
       content="server {
          listen 80;
-         auth_basic "Restricted Access";
          auth_basic_user_file /etc/nginx/htpasswd.users;
          location / {
          proxy_pass http://localhost:5601;
