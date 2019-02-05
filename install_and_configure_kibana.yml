@@ -46,5 +46,5 @@
       
   - name: Restart Nginx and configure SElinux policy to allow Nginx to access the proxied service...
     shell: |
-      systemctl restart ngin
+      systemctl restart nginx
       setsebool httpd_can_network_connect 1 -P
