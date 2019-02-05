@@ -47,7 +47,7 @@
       insertafter: '^#network.host: '
       line: 'network.host: localhost'
       
-  - name: Starting Elasticsearch...
+  - name: Starting and Enabling Elasticsearch...
     shell: |
       systemctl start elasticsearch
       systemctl enable elasticsearch
