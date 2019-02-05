@@ -2,5 +2,6 @@
   hosts: all
   tasks:
     - name: Hello Message
+    - with: "{{ variable1 }}"
       debug:
         msg: "{{ variable1 }}"
