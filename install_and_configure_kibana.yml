@@ -15,7 +15,7 @@
       
   - name: Refreshing file /etc/nginx/htpasswd.users
     file:
-      path: /etc/nginx/htpasswd.users backup=yes
+      path: /etc/nginx/htpasswd.users
       state: absent
       
   - name: Creating a user for Kibana...
