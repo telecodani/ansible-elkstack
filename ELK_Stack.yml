@@ -7,16 +7,15 @@
     shell: |
       yum install -y java-1.8.0-openjdk-devel epel-release
       
-  - name: Install Nginx
-  yum:
-    name:
-      - nginx
-    state: present
-
+  - name: install the latest version of Nginx
+    yum:
+      name: nginx
+      state: latest
+    
   - name: Get up Nginx...
     shell: |
-      systemctl start nginx    
-
+      systemctl start nginx
+      
   - name: Install prerequisites for Elasticsearch...
     shell: |
       rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
