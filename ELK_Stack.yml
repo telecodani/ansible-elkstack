@@ -3,10 +3,19 @@
 
   tasks:
 
-  - name: Install prerequisites for ELK, Java and Nginx...
+  - name: Install prerequisites for ELK, Java...
     shell: |
-      yum install -y java-1.8.0-openjdk-devel epel-release nginx
-      systemctl start nginx
+      yum install -y java-1.8.0-openjdk-devel epel-release
+      
+  - name: Install Nginx
+  yum:
+    name:
+      - nginx
+    state: present
+
+  - name: Get up Nginx...
+    shell: |
+      systemctl start nginx    
 
   - name: Install prerequisites for Elasticsearch...
     shell: |
