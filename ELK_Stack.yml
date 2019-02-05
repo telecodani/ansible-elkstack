@@ -19,8 +19,12 @@
   - name: Install prerequisites for Elasticsearch...
     shell: |
       rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
-      
-  - name: Add Elasticsearch repo...
+
+  - name: Creating Elasticsearch repo file...
+    shell: |
+      echo > /etc/yum.repos.d/elasticsearch.repo
+
+  - name: Add info for Elasticsearch repo...
     blockinfile: |
       dest=/etc/yum.repos.d/elasticsearch.repo
       content="[elasticsearch-6.x]
