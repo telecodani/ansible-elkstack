@@ -7,17 +7,17 @@
     yum:
       name: filebeat
       state: latest
-
+      
   - name: Block output to Elasticsearch...
     lineinfile:
       path: /etc/filebeat/filebeat.yml
       regexp: '^output.elasticsearch:'
       line: '#output.elasticsearch:'
-
+      
   - name: Block output port to Elasticsearch...
     lineinfile:
       path: /etc/filebeat/filebeat.yml
-      regexp: '^hosts'
+      regexp: '^hosts: ["localhost:9200"]'
       line: '#hosts: ["localhost:9200"]'
       
   - name: Open output to Logstash...
@@ -29,7 +29,7 @@
   - name: Open output port to Logstash...
     lineinfile:
       path: /etc/filebeat/filebeat.yml
-      insertafter: "^#?The Logstash hosts"
+      insertafter: '^output.logstash:'
       line: 'hosts: ["localhost:5044"]'
       
   - name: Enabling Filebeat modules, loading template and starting up Filebeat...
