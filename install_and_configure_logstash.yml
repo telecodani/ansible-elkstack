@@ -9,17 +9,14 @@
       state: latest
       
   - name: Creating the Logstash input conf file...
-    shell: |
-      echo > /etc/logstash/conf.d/02-beats-input.conf
-      
-  - name: Add info for Logstash input conf file...
-    blockinfile: |
-      dest=/etc/logstash/conf.d/02-beats-input.conf
-      content="input {
+    copy:
+      dest: /etc/logstash/conf.d/02-beats-input.conf
+      content: |
+           input {
            beats {
            port => 5044
             }
-           }"
+           }
            
   - name: Creating the Logstash syslog filter conf file...
     copy:
