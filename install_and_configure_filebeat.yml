@@ -3,26 +3,40 @@
 
   tasks:
 
-  - name: Install the latest version of Filebeat...
+  - name: Installing the latest version of Filebeat...
     yum:
       name: filebeat
       state: latest
 
-  - name: Block output to Elasticsearch...
+  - name: Block output port to Elasticsearch...
     lineinfile:
-      path: /etc/elasticsearch/elasticsearch.yml
+      path: /etc/filebeat/filebeat.yml
       regexp: '^hosts: ["localhost:9200"]'
       insertafter: '^hosts: ["localhost:9200"]'
       line: '#hosts: ["localhost:9200"]'
       
-  - name: Open output to Logstash...
+  - name: Block output to Elasticsearch...
+    lineinfile:
+      path: /etc/filebeat/filebeat.yml
+      regexp: '^output.elasticsearch:'
+      insertafter: '^output.elasticsearch:'
+      line: '#output.elasticsearch:'
+      
+  - name: Open output port to Logstash...
     lineinfile:
       path: /etc/elasticsearch/elasticsearch.yml
       regexp: '^#hosts: ["localhost:5044"]'
       insertafter: '#hosts: ["localhost:5044"]'
       line: 'hosts: ["localhost:5044"]'
       
-  - name: Enable Filebeat modules, loading template into and starting filebeat...
+  - name: Open output to Logstash...
+    lineinfile:
+      path: /etc/elasticsearch/elasticsearch.yml
+      regexp: '^#output.logstash:'
+      insertafter: '#output.logstash:'
+      line: 'output.logstash:' 
+      
+  - name: Enabling Filebeat modules, loading template and starting up Filebeat...
     shell: |
       filebeat modules enable system
       filebeat setup --template -E output.logstash.enabled=false -E 'output.elasticsearch.hosts=["localhost:9200"]'
