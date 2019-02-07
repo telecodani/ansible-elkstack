@@ -1,7 +1,12 @@
+---
+- hosts: all
+
+  tasks:
+
   - name: Refreshing file /etc/nginx/conf.d/kibana.conf
     file:
       path: /etc/nginx/conf.d/kibana.conf
-      state: absent      
+      state: absent 
       
   - name: Creating the Nginx conf file for Kibana...
     shell: |
