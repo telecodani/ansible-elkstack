@@ -24,14 +24,14 @@
       
   - name: Open output port to Logstash...
     lineinfile:
-      path: /etc/elasticsearch/elasticsearch.yml
+      path: /etc/filebeat/filebeat.yml
       regexp: '^#hosts: ["localhost:5044"]'
       insertafter: '#hosts: ["localhost:5044"]'
       line: 'hosts: ["localhost:5044"]'
       
   - name: Open output to Logstash...
     lineinfile:
-      path: /etc/elasticsearch/elasticsearch.yml
+      path: /etc/filebeat/filebeat.yml
       regexp: '^#output.logstash:'
       insertafter: '#output.logstash:'
       line: 'output.logstash:' 
