@@ -22,6 +22,11 @@
     shell: |
       echo "kibanaadmin:`openssl passwd -apr1 kibanaadmin`" | sudo tee -a /etc/nginx/htpasswd.users
       
+  - name: Refreshing file /etc/nginx/conf.d/kibana.conf
+    file:
+      path: /etc/nginx/conf.d/kibana.conf
+      state: absent      
+      
   - name: Creating the Nginx conf file for Kibana...
     shell: |
       echo > /etc/nginx/conf.d/kibana.conf
@@ -46,8 +51,8 @@
   - name: And mising parameter for Nginx conf file...
     lineinfile:
       path: /etc/nginx/conf.d/kibana.conf
-      regexp: '^listen 81; '
-      insertafter: '^listen 81; '
+      regexp: '^listen '
+      insertafter: '^listen '
       line: 'auth_basic "Restricted Access";'
       
   - name: Restart Nginx and configure SElinux policy to allow Nginx to access the proxied service...
