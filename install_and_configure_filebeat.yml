@@ -12,28 +12,24 @@
     lineinfile:
       path: /etc/filebeat/filebeat.yml
       regexp: '^hosts: ["localhost:9200"]'
-      insertafter: '^hosts: ["localhost:9200"]'
       line: '#hosts: ["localhost:9200"]'
       
   - name: Block output to Elasticsearch...
     lineinfile:
       path: /etc/filebeat/filebeat.yml
       regexp: '^output.elasticsearch:'
-      insertafter: '^output.elasticsearch:'
       line: '#output.elasticsearch:'
       
   - name: Open output port to Logstash...
     lineinfile:
       path: /etc/filebeat/filebeat.yml
       regexp: '^#hosts: ["localhost:5044"]'
-      insertafter: '#hosts: ["localhost:5044"]'
       line: 'hosts: ["localhost:5044"]'
       
   - name: Open output to Logstash...
     lineinfile:
       path: /etc/filebeat/filebeat.yml
       regexp: '^#output.logstash:'
-      insertafter: '#output.logstash:'
       line: 'output.logstash:' 
       
   - name: Enabling Filebeat modules, loading template and starting up Filebeat...
