@@ -17,7 +17,7 @@
       dest=/etc/nginx/conf.d/kibana.conf
       content="server {
          listen 81;
-         auth_basic;
+         
          auth_basic_user_file /etc/nginx/htpasswd.users;
          location / {
          proxy_pass http://localhost:5601;
@@ -28,7 +28,14 @@
          proxy_cache_bypass $http_upgrade;
          }
          }"
-
+         
+    - name: And mising parameter for Nginx conf file...
+      lineinfile:
+        path: /etc/nginx/conf.d/kibana.conf
+        regexp: '^auth_basic_user_file'
+        insertbefore: '^auth_basic_user_file'
+        line: 'auth_basic "Restricted Access";'
+      
   - name: Restart Nginx and configure SElinux policy to allow Nginx to access the proxied service...
     shell: |
       systemctl restart nginx
