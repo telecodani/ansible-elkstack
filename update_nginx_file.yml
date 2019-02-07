@@ -28,14 +28,7 @@
          proxy_cache_bypass $http_upgrade;
          }
          }"
-         
-  - name: And mising parameter for Nginx conf file...
-    lineinfile:
-      path: /etc/nginx/conf.d/kibana.conf
-      regexp: '^listen 81;'
-      insertafter: '^listen 81;'
-      line: 'auth_basic "Restricted Access";'
-      
+
   - name: Restart Nginx and configure SElinux policy to allow Nginx to access the proxied service...
     shell: |
       systemctl restart nginx
