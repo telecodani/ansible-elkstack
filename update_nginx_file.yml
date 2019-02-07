@@ -32,8 +32,8 @@
   - name: And mising parameter for Nginx conf file...
     lineinfile:
       path: /etc/nginx/conf.d/kibana.conf
-      regexp: '^; '
-      insertafter: '^; '
+      regexp: '^listen '
+      insertafter: '^listen 81; '
       line: 'auth_basic "Restricted Access";'
       
   - name: Restart Nginx and configure SElinux policy to allow Nginx to access the proxied service...
