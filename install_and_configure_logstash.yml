@@ -74,7 +74,6 @@
            }
            }
            
-  - name: Starting and enabling Logstash...
+  - name: Cheking Logstash...
     shell: |
-      systemctl enable logstash
-      systemctl start logstash
+      sudo -u logstash /usr/share/logstash/bin/logstash --path.settings /etc/logstash -t
