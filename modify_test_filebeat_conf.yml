@@ -12,5 +12,5 @@
   - name: Block output port to Elasticsearch...
     lineinfile:
       path: /etc/filebeat/filebeat.yml
-      regexp: '^hosts:'
-      line: '#hosts:'
+      regexp: '^hosts: ["localhost:9200"]'
+      line: '#hosts: ["localhost:9200"]'
