@@ -74,3 +74,10 @@
   - name: Cheking Logstash...
     shell: |
       sudo -u logstash /usr/share/logstash/bin/logstash --path.settings /etc/logstash -t
+      
+  - name: Starting and enabling Logstash...
+    shell: |
+      /usr/share/logstash/bin/system-install /etc/logstash/startup.options systemd
+      systemctl start logstash
+      systemctl enable logstash
+      
