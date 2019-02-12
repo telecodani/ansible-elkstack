@@ -1,9 +1,9 @@
-# Some useful Ansible jobs
+# Install ELK Stack on Centos 7.5
 Install Elasticsearch, Logstash, and Kibana (Elastic Stack) on CentOS 7, following this playbook step:
-1.install_and_configure_elasticsearch.yml
-2.install_and_configure_kibana.yml
-3.install_and_configure_logstash.yml
-4.install_and_configure_filebeat.yml
+* 1.install_and_configure_elasticsearch.yml
+* 2.install_and_configure_kibana.yml
+* 3.install_and_configure_logstash.yml
+* 4.install_and_configure_filebeat.yml
 
 Once all playbook are completed you can access at server_ip:81. And with the user kibanaadmin with the same password. You can add new users on /etc/nginx/htpasswd.users with:
 
