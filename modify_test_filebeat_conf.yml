@@ -1,0 +1,16 @@
+---
+- hosts: all
+
+  tasks:
+      
+  - name: Block output to Elasticsearch...
+    lineinfile:
+      path: /etc/filebeat/filebeat.yml
+      regexp: '^output.elasticsearch:'
+      line: '#output.elasticsearch:'
+      
+  - name: Block output port to Elasticsearch...
+    lineinfile:
+      path: /etc/filebeat/filebeat.yml
+      regexp: '^hosts:'
+      line: '#hosts:'
