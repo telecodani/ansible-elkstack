@@ -1,5 +1,5 @@
 # Install ELK Stack on Centos 7.5
-Install Elasticsearch, Logstash, and Kibana (Elastic Stack) on CentOS 7, following this playbook step:
+Install Elasticsearch, Logstash, and Kibana (Elastic Stack) on CentOS 7, following this steps:
 * 1.install_and_configure_elasticsearch.yml
 * 2.install_and_configure_kibana.yml
 * 3.install_and_configure_logstash.yml
