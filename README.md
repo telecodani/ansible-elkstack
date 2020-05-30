@@ -5,7 +5,7 @@ Install Elasticsearch, Logstash, and Kibana (Elastic Stack) on CentOS 7, followi
 * 3.install_and_configure_logstash.yml
 * 4.install_and_configure_filebeat.yml
 
-Once all playbook are completed you can access at server_ip:81. And with the user kibanaadmin with the same password. You can add new users on /etc/nginx/htpasswd.users with:
+Once all playbook are completed you will be able to access at server_ip:81. With kibanaadmin as user with the same password. You can add new users on /etc/nginx/htpasswd.users with:
 ```
 echo "new_user_name_here:`openssl passwd -apr1`" | sudo tee -a /etc/nginx/htpasswd.users
 ```
